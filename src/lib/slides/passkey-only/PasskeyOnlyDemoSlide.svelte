@@ -1,19 +1,25 @@
 <script lang="ts">
 	import DemoApplication from '#lib/demo/components/DemoApplication.svelte';
-	import { Slide, SpeakerNotes, type SlideChangeDetail } from '@seb-buch/slyd';
+	import { Slide, type SlideChangeDetail, SpeakerNotes } from '@seb-buch/slyd';
 	import { onMount, untrack } from 'svelte';
 	import { on } from 'svelte/events';
-	import type { PasskeyOnlyAuthenticationStateManager } from '#lib/demo/logic/passkey-only-demo.svelte.js';
-	import DemoPasskeyOnlyRegistrationForm from '#lib/demo/components/DemoPasskeyOnlyRegistrationForm.svelte';
+	import type {
+		PasskeyOnlyAuthenticationStateManager
+	} from '#lib/demo/logic/passkey-only-demo.svelte.js';
+	import DemoPasskeyOnlyRegistrationForm
+		from '#lib/demo/components/DemoPasskeyOnlyRegistrationForm.svelte';
 	import DemoPasskeyOnlyLoginForm from '#lib/demo/components/DemoPasskeyOnlyLoginForm.svelte';
 	import DemoAccountSummary from '#lib/demo/components/DemoAccountSummary.svelte';
 	import DemoPasskeyManagement from '#lib/demo/components/DemoPasskeyManagement.svelte';
+
 	let {
 		authenticationState = $bindable(),
-		phase
+		phase,
+		oncredentialschange
 	}: {
 		authenticationState: PasskeyOnlyAuthenticationStateManager['currentState'];
 		phase: 'registration' | 'login';
+		oncredentialschange?: () => void;
 	} = $props();
 	let heading: HTMLHeadingElement;
 	let previousIndex: number | undefined;
@@ -50,13 +56,13 @@
 
 <Slide>
 	<h3 bind:this={heading}>
-		100 % passkey &ndash; {phase === 'registration' ? 'Créer un compte' : 'Se connecter'}
+		Passkeys seules &ndash; {phase === 'registration' ? 'Créer un compte' : 'Se connecter'}
 	</h3>
 	<DemoApplication state={authenticationState}>
 		{#if authenticationState.kind === 'authenticated'}<DemoAccountSummary
 				currentState={authenticationState}
 			/>
-			{#if phase === 'login'}<DemoPasskeyManagement />{/if}
+			{#if phase === 'login'}<DemoPasskeyManagement {oncredentialschange} />{/if}
 		{:else if authenticationState.kind === 'user-registration'}
 			<DemoPasskeyOnlyRegistrationForm bind:currentState={authenticationState} />
 		{:else if authenticationState.kind === 'user-login'}
@@ -96,9 +102,8 @@
 			<p>
 				Une fois connecté, renommer la première passkey « Ordinateur ». Ajouter une passkey nommée «
 				Téléphone » en choisissant le téléphone dans la fenêtre système. Vérifier deux identifiants
-				distincts. Se déconnecter puis revenir avec le téléphone via le QR code. Retirer ensuite «
-				Ordinateur », se déconnecter et tester explicitement cet ancien credential : la connexion
-				doit échouer. Revenir avec « Téléphone » avant de poursuivre.
+				distincts. Se déconnecter puis revenir avec le téléphone via le QR code. Conserver les deux
+				passkeys pour comparer leurs données dans la diapositive suivante.
 			</p>
 		{/if}
 	</SpeakerNotes>

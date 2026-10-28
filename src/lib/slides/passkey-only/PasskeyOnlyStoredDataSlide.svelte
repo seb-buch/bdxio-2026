@@ -1,30 +1,51 @@
 <script lang="ts">
 	import { DemoError, demoErrorMessage } from '#lib/demo/logic/errors.js';
-	import { Slide, SpeakerNotes } from '@seb-buch/slyd';
-	import { untrack } from 'svelte';
+	import { Slide, type SlideChangeDetail, SpeakerNotes } from '@seb-buch/slyd';
+	import { onMount, untrack } from 'svelte';
+	import { on } from 'svelte/events';
 	import { examplePasskeyOnlyData } from '#lib/demo/example-data.js';
-	import type { PasskeyOnlyAuthenticationStateManager } from '#lib/demo/logic/passkey-only-demo.svelte.js';
+	import type {
+		PasskeyOnlyAuthenticationStateManager
+	} from '#lib/demo/logic/passkey-only-demo.svelte.js';
 	import type { PasskeyOnlyDemoDataRow } from '#lib/demo/models.js';
 	import { BASE_API_URL } from '#lib/demo/constants.js';
 	import DemoPasskeyTransports from '#lib/demo/components/DemoPasskeyTransports.svelte';
 
 	let {
-		authenticationState
+		authenticationState,
+		credentialsRevision = 0
 	}: {
 		authenticationState: PasskeyOnlyAuthenticationStateManager['currentState'];
+		credentialsRevision?: number;
 	} = $props();
 	let record = $state<PasskeyOnlyDemoDataRow>();
-	const displayedRecord = $derived(record ?? examplePasskeyOnlyData);
 	let message = $state('');
 	let loading = $state(false);
+	let heading: HTMLHeadingElement;
+	let active = $state(false);
+	let refresh = $state(0);
+
+	onMount(() => {
+		const slide = heading.closest('.slyd-slide');
+		const presentation = slide?.closest('.slyd');
+		if (!slide || !presentation) return;
+		const ownIndex = Array.from(presentation.querySelectorAll('.slyd-slide')).indexOf(slide);
+		active = slide.classList.contains('current');
+		return on(window, 'slyd:slidechange', (event: CustomEvent<SlideChangeDetail>) => {
+			if (event.target === presentation) active = event.detail.slideIndex === ownIndex;
+		});
+	});
 
 	$effect(() => {
 		const username =
 			authenticationState.kind === 'authenticated' ? authenticationState.user.username : undefined;
+		// Reload on slide entry and after any credential mutation, even for the same account.
+		void credentialsRevision;
+		void refresh;
 		record = undefined;
 		message = '';
 		loading = false;
-		if (!username) return;
+		if (!active || !username) return;
 		const controller = new AbortController();
 		untrack(() => void loadRecord(username, controller.signal));
 		return () => controller.abort();
@@ -60,14 +81,32 @@
 </script>
 
 <Slide>
-	<h3>100 % passkey – Les données stockées</h3>
-	<DemoPasskeyTransports record={displayedRecord} />
+	<h3 bind:this={heading}>Passkeys seules – Les données stockées</h3>
+	{#if authenticationState.kind === 'authenticated'}
+		{#if message}
+			<p role="alert">{message}</p>
+			<button type="button" onclick={() => refresh++}>Réessayer</button>
+		{:else if loading || !record}
+			<p role="status">Chargement des passkeys du compte…</p>
+		{:else}
+			<DemoPasskeyTransports {record} />
+		{/if}
+	{:else}
+		<p>Données d’exemple — connectez-vous dans la démo pour afficher celles de votre compte.</p>
+		<DemoPasskeyTransports record={examplePasskeyOnlyData} />
+	{/if}
 	<SpeakerNotes>
 		<p>
 			Toutes les passkeys du compte sont affichées en entier, avec leur identifiant, leur nom, leur
 			clé publique, leur compteur et leurs transports. Comparer directement la passkey de
 			l’ordinateur et celle du téléphone. Les identifiants et les clés publiques sont propres à
 			chaque credential. Les données utilisateur ont déjà été présentées.
+		</p>
+		<p>
+			[Après la comparaison, test facultatif de révocation.] Revenir à la gestion des passkeys,
+			retirer « Ordinateur », puis se déconnecter et tester explicitement cet ancien credential : la
+			connexion doit échouer. Revenir avec « Téléphone ». En retournant sur cette diapositive, seule
+			la passkey restante doit apparaître.
 		</p>
 
 		<p>

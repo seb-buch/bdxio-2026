@@ -13,14 +13,19 @@
 		authenticationState: PasskeyOnlyAuthenticationStateManager['currentState'];
 	};
 	let { authenticationState = $bindable() }: Props = $props();
+	let credentialsRevision = $state(0);
 </script>
 
 <PasskeyOnlySectionTitle />
 <PasskeyOnlyIntroductionSlide />
 <PasskeyOnlyDemoSlide phase="registration" bind:authenticationState />
 <PasskeyOnlyRegistrationFlowSlide />
-<PasskeyOnlyDemoSlide phase="login" bind:authenticationState />
+<PasskeyOnlyDemoSlide
+	phase="login"
+	bind:authenticationState
+	oncredentialschange={() => credentialsRevision++}
+/>
 <CrossDeviceSlide />
-<PasskeyOnlyStoredDataSlide {authenticationState} />
+<PasskeyOnlyStoredDataSlide {authenticationState} {credentialsRevision} />
 <PasskeyTypes />
 <PasskeyOnlyRecoverySlide />

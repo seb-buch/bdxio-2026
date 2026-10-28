@@ -4,6 +4,8 @@
 	import { DemoError, demoErrorMessage } from '#lib/demo/logic/errors.js';
 	import { PasskeyClient, passkeyError } from '#lib/demo/logic/passkey-client.js';
 
+	let { oncredentialschange }: { oncredentialschange?: () => void } = $props();
+
 	const endpoint = `${BASE_API_URL}/passkey-only/credentials`;
 	const passkey = new PasskeyClient(endpoint);
 	let credentials = $state<{ id: string; label: string }[]>([]);
@@ -57,6 +59,7 @@
 		event.preventDefault();
 		await perform(async () => {
 			await passkey.register(undefined, label.trim());
+			oncredentialschange?.();
 			await load();
 		}, 'Une autre passkey est enregistrée. Vous pouvez maintenant vous connecter avec elle.');
 	}
@@ -64,6 +67,7 @@
 	async function rename(credential: { id: string; label: string }) {
 		await perform(async () => {
 			await request('PATCH', credential);
+			oncredentialschange?.();
 			await load();
 		}, 'Nom de la passkey enregistré.');
 	}
@@ -71,6 +75,7 @@
 	async function remove(id: string) {
 		await perform(async () => {
 			await request('DELETE', { id });
+			oncredentialschange?.();
 			await load();
 		}, 'Passkey retirée du compte. Testez une nouvelle connexion pour vérifier la révocation.');
 	}
