@@ -1,0 +1,14 @@
+{
+	"id": "{{id}}",
+	"rawId": "{{rawId}}",
+	"type": "{{type}}",
+	"authenticatorAttachment": "{{authenticatorAttachment}}",
+	"response": {
+		"clientDataJSON": "{{response.clientDataJSON}}",
+		"attestationObject": "{{response.attestationObject}}",
+		"authenticatorData": "{{response.authenticatorData}}",
+		"publicKey": "{{response.publicKey}}",
+		"publicKeyAlgorithm": "{{response.publicKeyAlgorithm}}",
+		"transports": "{{response.transports}}"
+	}
+}

@@ -1,0 +1,55 @@
+{
+	"name": "presentation",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "bun --bun vite build",
+		"build:pages": "BASE_PATH=/bdxio-2026 bun run build",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "bun --bun vite dev",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint .",
+		"prepare": "svelte-kit sync || echo ''",
+		"preview": "bun --bun vite preview",
+		"proxy:certs": "bash scripts/proxy.sh certs",
+		"proxy:check": "bash scripts/proxy.sh check",
+		"proxy:hosts": "bash scripts/proxy.sh hosts",
+		"proxy:start": "bash scripts/proxy.sh start",
+		"proxy:stop": "bash scripts/proxy.sh stop"
+	},
+	"dependencies": {
+		"@noble/hashes": "^2.4.0",
+		"@seb-buch/slyd": "0.5.0",
+		"@simplewebauthn/server": "^14.0.3",
+		"otpauth": "^9.5.2",
+		"qrcode": "^1.5.4"
+	},
+	"devDependencies": {
+		"@eslint/compat": "^2.1.1",
+		"@eslint/js": "^10.0.1",
+		"@sveltejs/adapter-static": "^4.0.0",
+		"@sveltejs/kit": "^3.1.0",
+		"@sveltejs/load-config": "^0.2.2",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@types/bun": "^1.4.4",
+		"@types/node": "^26.6.5",
+		"@types/qrcode": "^1.5.6",
+		"eslint": "^10.13.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.23.1",
+		"globals": "^17.13.0",
+		"prettier": "^3.9.10",
+		"prettier-plugin-svelte": "^4.1.1",
+		"svelte": "^5.57.3",
+		"svelte-check": "^4.7.7",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.72.1",
+		"vite": "^8.3.5"
+	},
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
+	}
+}

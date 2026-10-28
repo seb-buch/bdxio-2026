@@ -1,0 +1,211 @@
+@import '@seb-buch/slyd/themes/default.css';
+
+@font-face {
+	font-family: 'Atlas Sans';
+	src: url('../assets/fonts/nunito-sans-normal-latin.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Atlas Sans';
+	src: url('../assets/fonts/nunito-sans-italic-latin.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Atlas Display';
+	src: url('../assets/fonts/poppins-700-latin.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+/* Warm paper, dark ink, and saturated accents that stay legible on a projector. */
+:root {
+	color-scheme: light;
+	--slyd-main-font: 'Atlas Sans', 'Helvetica', sans-serif;
+	--slyd-main-color: #263e46;
+	--slyd-headings-font: 'Atlas Display', 'Helvetica', sans-serif;
+	--slyd-headings-color: #183b40;
+	--slyd-headings-font-weight: 700;
+	--slyd-accent-color: #086b63;
+	--slyd-slide-bg-color: #fffdf8;
+	--slyd-presentation-bg-color: #e4e9e4;
+	--slyd-base-font-size: 40px;
+	--slyd-slide-padding: 40px;
+
+	--atlas-clay: #a14e32;
+	--atlas-rule: #c5d6ce;
+	--atlas-muted: #4e6267;
+	--atlas-tint: #edf4ee;
+
+	--flow-actor-name: var(--slyd-headings-color);
+	--flow-lifeline: #658c83;
+	--flow-lifeline-opacity: 0.6;
+	--flow-step-bg: var(--slyd-accent-color);
+	--flow-step-text: #ffffff;
+	--flow-forward: var(--slyd-accent-color);
+	--flow-return: var(--atlas-clay);
+	--flow-process-bg: #edf4ee;
+	--flow-process-stroke: #44766b;
+	--flow-process-text: var(--slyd-headings-color);
+}
+
+.slyd-slide {
+	line-height: 1.45;
+	background-image: radial-gradient(ellipse at top right, #edf4ee80, transparent 55%);
+	box-shadow: 0 16px 56px #183b401a;
+}
+
+.slyd-slide :is(h1, h2, h3) {
+	line-height: 1.12;
+}
+
+.slyd-slide :is(h1, h2) {
+	color: var(--slyd-headings-color);
+	text-align: left;
+}
+
+.slyd-slide h3 {
+	font-size: 1.6em;
+	padding-bottom: 16px;
+	border-bottom: 2px solid var(--atlas-rule);
+	background: linear-gradient(var(--slyd-accent-color), var(--slyd-accent-color)) left bottom /
+		112px 5px no-repeat;
+}
+
+.slyd-slide:has(.title-page, .section-title) {
+	background-image: url('../assets/slides/bdxio-back-to-school-2026-no-text.png');
+	background-size: auto 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.slyd-slide .title-page {
+	box-sizing: border-box;
+	padding: 0 56px;
+	align-items: center;
+	text-align: center;
+}
+
+.slyd-slide .title-page h1 {
+	text-align: center;
+}
+
+.slyd-slide .title-page .event {
+	margin-bottom: 44px;
+	color: var(--atlas-clay);
+	letter-spacing: 0.12em;
+}
+
+.slyd-slide .title-page .speaker {
+	margin-top: 44px;
+	color: var(--atlas-muted);
+}
+
+.slyd .slyd-slide .section-title {
+	background: transparent;
+	backdrop-filter: none;
+	border-radius: 0;
+}
+
+.slyd-slide .section-title h2 {
+	max-width: 1040px;
+	margin: 0;
+	font-size: 96px;
+	text-align: center;
+	text-wrap: balance;
+}
+
+.slyd-slide .title-page h1,
+.slyd-slide .section-title h2 {
+	padding: 36px 48px;
+	border-radius: 20px;
+	background-color: #fffdf8aa;
+	backdrop-filter: blur(2px);
+}
+
+.slyd-slide li::marker {
+	color: var(--slyd-accent-color);
+}
+
+.slyd-slide table {
+	width: 100%;
+	border-collapse: collapse;
+	font-variant-numeric: tabular-nums;
+}
+
+.slyd-slide thead th {
+	background-color: var(--atlas-tint);
+	color: var(--slyd-headings-color);
+	text-align: left;
+}
+
+.slyd-slide tbody tr:nth-child(even) {
+	background-color: #f2f6f0;
+}
+
+.slyd-slide a:hover {
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+
+.slyd .slyd-slide .code-container {
+	background: #fffdf8e6;
+}
+
+.slyd .slyd-slide .code-panel {
+	border: 1px solid var(--atlas-rule);
+	border-radius: 14px;
+	box-shadow: 0 18px 64px #183b4024;
+}
+
+.slyd-slide .code-panel .description {
+	color: var(--slyd-headings-color);
+}
+
+.slyd-slide .code-panel .location {
+	color: var(--atlas-muted);
+}
+
+.slyd-slide :is(input, select, textarea, button) {
+	font: inherit;
+	font-size: 0.8em;
+	padding: 0.4em 0.6em;
+	border: 1px solid #8ba69c;
+	border-radius: 8px;
+	color: var(--slyd-main-color);
+	background-color: #ffffff;
+}
+
+.slyd-slide button {
+	color: #ffffff;
+	background-color: var(--slyd-accent-color);
+	border-color: var(--slyd-accent-color);
+	cursor: pointer;
+}
+
+.slyd-slide button[type='button'] {
+	color: var(--slyd-accent-color);
+	background-color: var(--slyd-slide-bg-color);
+}
+
+.slyd-slide button:not([type='button']):hover:not(:disabled),
+.slyd-slide .demo-app button:not([type='button']):hover:not(:disabled) {
+	background-color: #07564f;
+	border-color: #07564f;
+}
+
+.slyd-slide .demo-app {
+	border-color: var(--atlas-rule);
+	box-shadow: 0 16px 48px #183b4012;
+}
+
+.slyd-slide :is(input, select, textarea, button, a):focus-visible {
+	outline: 3px solid var(--slyd-accent-color);
+	outline-offset: 3px;
+}

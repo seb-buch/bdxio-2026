@@ -1,0 +1,7 @@
+{
+	"rpId": "{{rpId}}",
+	"challenge": "{{challenge}}",
+	"allowCredentials": "{{allowCredentials}}",
+	"userVerification": "{{userVerification}}",
+	"timeout": "{{timeout}}"
+}

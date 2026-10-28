@@ -1,0 +1,23 @@
+{
+	"challenge": "{{challenge}}",
+	"rp": { "name": "{{rp.name}}", "id": "{{rp.id}}" },
+	"user": {
+		"id": "{{user.id}}",
+		"name": "{{user.name}}",
+		"displayName": "{{user.displayName}}"
+	},
+	"excludeCredentials": "{{excludeCredentials}}",
+	"pubKeyCredParams": [
+		{ "type": "public-key", "alg": -48 }, // ML-DSA-44
+		{ "type": "public-key", "alg": -8 }, // EdDSA
+		{ "type": "public-key", "alg": -7 }, // ES256
+		{ "type": "public-key", "alg": -257 } // RS256
+	],
+	"attestation": "none",
+	"authenticatorSelection": {
+		"residentKey": "required",
+		"userVerification": "preferred",
+		"requireResidentKey": true
+	},
+	"timeout": 60000
+}

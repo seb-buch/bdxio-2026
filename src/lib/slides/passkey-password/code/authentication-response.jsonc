@@ -1,0 +1,13 @@
+{
+	"id": "{{id}}",
+	"rawId": "{{rawId}}",
+	"type": "{{type}}",
+	"authenticatorAttachment": "{{authenticatorAttachment}}",
+	"response": {
+		"clientDataJSON": "{{response.clientDataJSON}}",
+		"authenticatorData": "{{response.authenticatorData}}",
+		"signature": "{{response.signature}}",
+		"userHandle": "{{response.userHandle}}"
+	},
+	"clientExtensionResults": "{{clientExtensionResults}}"
+}
