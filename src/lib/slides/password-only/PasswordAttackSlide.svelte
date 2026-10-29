@@ -51,7 +51,7 @@
 </script>
 
 <Slide>
-	<h3>Authentification par MdP &ndash; Les données stockées</h3>
+	<h3>Mot de passe &ndash; données stockées</h3>
 	<DemoPasswordStoredRecord record={displayedRecord} />
 	{#if displayedRecord.password_hash}
 		<div class="test-view fragment" data-fragment-index="7">

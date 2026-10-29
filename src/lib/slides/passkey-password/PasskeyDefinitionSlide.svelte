@@ -3,7 +3,7 @@
 </script>
 
 <Slide>
-	<h3>Au fait, c'est quoi une <em>Passkey</em>&nbsp;?</h3>
+	<h3>Au fait, c'est quoi une <em>passkey</em>&nbsp;?</h3>
 	<ul class="w3c-terms">
 		<li class="important">Passkey</li>
 		<li>Client-side discoverable Public Key Credential Source</li>

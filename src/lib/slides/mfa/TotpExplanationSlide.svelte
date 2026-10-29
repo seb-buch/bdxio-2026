@@ -7,7 +7,7 @@
 </script>
 
 <Slide>
-	<h3>Double authentification — mot de passe + TOTP</h3>
+	<h3>Comment fonctionne un code TOTP ?</h3>
 	<p class="definition">
 		<strong>TOTP = Time-based One-Time Password</strong> = Code à usage unique basé sur le temps
 	</p>

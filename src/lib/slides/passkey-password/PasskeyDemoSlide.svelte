@@ -1,9 +1,12 @@
 <script lang="ts">
-	import { Slide, SpeakerNotes, type SlideChangeDetail } from '@seb-buch/slyd';
+	import { Slide, type SlideChangeDetail, SpeakerNotes } from '@seb-buch/slyd';
 	import { onMount, untrack } from 'svelte';
 	import { on } from 'svelte/events';
 	import DemoPasskeyApplication from '#lib/demo/components/DemoPasskeyApplication.svelte';
-	import type { PasskeyMfaAuthenticationStateManager } from '#lib/demo/logic/passkey-mfa-demo.svelte.js';
+	import type {
+		PasskeyMfaAuthenticationStateManager
+	} from '#lib/demo/logic/passkey-mfa-demo.svelte.js';
+
 	let {
 		authenticationState = $bindable(),
 		phase
@@ -47,7 +50,7 @@
 
 <Slide>
 	<h3 bind:this={heading}>
-		Passkey &ndash; {phase === 'registration' ? 'Ajouter au compte' : 'Se connecter'}
+		{phase === 'registration' ? 'Ajouter une passkey au compte' : 'Se connecter avec une passkey'}
 	</h3>
 	<DemoPasskeyApplication bind:authenticationState {phase} />
 	{#if message}<p role="alert">{message}</p>{/if}

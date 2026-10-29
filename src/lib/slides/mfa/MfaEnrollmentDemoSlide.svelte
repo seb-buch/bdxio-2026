@@ -2,12 +2,13 @@
 	import { Slide, SpeakerNotes } from '@seb-buch/slyd';
 	import DemoMfaApplication from '#lib/demo/components/DemoMfaApplication.svelte';
 	import type { MfaAuthenticationState } from '#lib/demo/logic/mfa-flow.js';
+
 	let { authenticationState = $bindable() }: { authenticationState: MfaAuthenticationState } =
 		$props();
 </script>
 
 <Slide>
-	<h3>MFA &ndash; Activer le deuxième facteur</h3>
+	<h3>Activer le deuxième facteur</h3>
 	<DemoMfaApplication bind:authenticationState />
 	<SpeakerNotes>
 		<p>

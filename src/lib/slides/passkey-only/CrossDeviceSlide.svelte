@@ -27,7 +27,7 @@
 </script>
 
 <Slide>
-	<h3>Se connecter avec son téléphone</h3>
+	<h3>Se connecter sur ordinateur avec son téléphone</h3>
 	<div class="flow">
 		<FlowDiagram flowDiagram={flow} diagramStyle={{ stepHeight: 60, streamWidth: 350 }} />
 	</div>

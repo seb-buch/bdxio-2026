@@ -9,7 +9,7 @@
 </script>
 
 <Slide>
-	<h3>S'authentifier en signant ?</h3>
+	<h3>S'authentifier par une signature</h3>
 
 	<div class="victory-container">
 		<div class="crypto-user">

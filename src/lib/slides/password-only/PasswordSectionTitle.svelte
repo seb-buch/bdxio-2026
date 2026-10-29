@@ -3,7 +3,7 @@
 	import { SpeakerNotes } from '@seb-buch/slyd';
 </script>
 
-<SectionTitleSlide title="Au commencement: les mots de passe">
+<SectionTitleSlide title="Au commencement : les mots de passe">
 	<SpeakerNotes>
 		<p>
 			Avant de rentrer dans le vif du sujet avec les passkeys, je vous propose de faire un bref

@@ -70,7 +70,7 @@
 </script>
 
 <Slide>
-	<h3>Double authentification &ndash; Les données stockées</h3>
+	<h3>Mot de passe + TOTP &ndash; données stockées</h3>
 	<div class="stored-data">
 		<div class="account-groups">
 			<span class="user-label fragment" data-fragment-index="0">Données utilisateur</span>

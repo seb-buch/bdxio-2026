@@ -81,7 +81,7 @@
 </script>
 
 <Slide>
-	<h3 bind:this={heading}>Passkeys seules – Les données stockées</h3>
+	<h3 bind:this={heading}>Passkeys seules – données stockées</h3>
 	{#if authenticationState.kind === 'authenticated'}
 		{#if message}
 			<p role="alert">{message}</p>

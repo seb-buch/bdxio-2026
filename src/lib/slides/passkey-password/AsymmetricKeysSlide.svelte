@@ -4,7 +4,7 @@
 </script>
 
 <Slide>
-	<h3>La cryptographie asymétrique</h3>
+	<h3>Clés asymétriques</h3>
 	<div class="asymmetric-keys">
 		<div class="keys">
 			<div class="key">

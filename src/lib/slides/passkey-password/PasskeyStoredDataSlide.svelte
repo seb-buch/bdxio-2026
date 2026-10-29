@@ -3,7 +3,9 @@
 	import { Slide, SpeakerNotes } from '@seb-buch/slyd';
 	import { untrack } from 'svelte';
 	import { examplePasskeyMfaData } from '#lib/demo/example-data.js';
-	import type { PasskeyMfaAuthenticationStateManager } from '#lib/demo/logic/passkey-mfa-demo.svelte.js';
+	import type {
+		PasskeyMfaAuthenticationStateManager
+	} from '#lib/demo/logic/passkey-mfa-demo.svelte.js';
 	import type { PasskeyMfaDemoDataRow } from '#lib/demo/models.js';
 	import { BASE_API_URL } from '#lib/demo/constants.js';
 	import DemoPasskeyStoredRecord from '#lib/demo/components/DemoPasskeyStoredRecord.svelte';
@@ -60,7 +62,7 @@
 </script>
 
 <Slide>
-	<h3>Authentification hydride &ndash; données stockées</h3>
+	<h3>Mot de passe, TOTP et passkeys &ndash; données stockées</h3>
 	<DemoPasskeyStoredRecord record={displayedRecord} />
 	<SpeakerNotes>
 		<p>

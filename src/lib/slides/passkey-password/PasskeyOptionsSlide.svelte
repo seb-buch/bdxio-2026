@@ -3,8 +3,7 @@
 </script>
 
 <Slide>
-	<h3>Découvrable... comment?</h3>
-	<p>WebAuthn définie des options de création/utilisation des passkeys:</p>
+	<h3>Les options WebAuthn</h3>
 	<table aria-label="Options WebAuthn, valeurs possibles et effets">
 		<thead>
 			<tr>

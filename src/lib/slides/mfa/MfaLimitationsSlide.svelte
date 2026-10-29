@@ -3,7 +3,7 @@
 </script>
 
 <Slide>
-	<h3>L'authentification multifacteur en résumé</h3>
+	<h3>Mot de passe + TOTP : le bilan</h3>
 	<p class="benefit">Voler un mot de passe n’est plus suffisant pour accéder au compte.</p>
 	<div class="weaknesses">
 		<section class="fragment" data-fragment-index="0">

@@ -3,7 +3,7 @@
 </script>
 
 <Slide>
-	<h3>Authentification mixte MFA et passkey</h3>
+	<h3>Ajouter une passkey : bénéfices et limites</h3>
 	<div class="points">
 		<section class="fragment">
 			<h4>Liée au site</h4>

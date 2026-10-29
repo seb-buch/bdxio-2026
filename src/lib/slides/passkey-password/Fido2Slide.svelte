@@ -3,7 +3,7 @@
 </script>
 
 <Slide>
-	<h3>FIDO2, Webauthn et CTAP</h3>
+	<h3>FIDO2, WebAuthn et CTAP</h3>
 
 	<p style="text-align: center">
 		Spécification

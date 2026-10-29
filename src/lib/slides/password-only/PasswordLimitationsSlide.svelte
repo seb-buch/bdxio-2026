@@ -3,7 +3,7 @@
 </script>
 
 <Slide>
-	<h3>L'authentification par mot de passe en résumé</h3>
+	<h3>Les limites du mot de passe</h3>
 	<div class="weaknesses">
 		<section class="weakness fragment" data-fragment-index="0">
 			<h4>Un secret partagé</h4>
